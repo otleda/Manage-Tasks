@@ -24,12 +24,24 @@ function App() {
     },
   ]);
 
+  //   function onTaskClick(taskId) {
+  //     setTasks((currentTasks) =>
+  //       currentTasks.map((task) =>
+  //         task.id === taskId
+  //           ? { ...task, isCompleted: !task.isCompleted }
+  //           : task
+  //       )
+  //     );
+  //   }
+
   return (
     <div className="w-screen h-screen bg-[#23272f] flex justify-center p-6">
       <div className="w=[500px]">
-        <h1 className="text-3xl text-center text-orange-400">Manager Tasks</h1>
+        <h1 className="text-3xl text-center text-orange-400 font-Roboto">
+          Book to study
+        </h1>
         <AddTask />
-        <Tasks tasks={tasks} />
+        <Tasks tasks={tasks} onTaskClick={onTaskClick} />
       </div>
     </div>
   );
