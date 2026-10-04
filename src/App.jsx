@@ -24,15 +24,24 @@ function App() {
     },
   ]);
 
-  //   function onTaskClick(taskId) {
-  //     setTasks((currentTasks) =>
-  //       currentTasks.map((task) =>
-  //         task.id === taskId
-  //           ? { ...task, isCompleted: !task.isCompleted }
-  //           : task
-  //       )
-  //     );
-  //   }
+  function onTaskClick(taskId) {
+    const newTasks = tasks.map((task) => {
+      if (task.id === taskId) {
+        return { ...task, isCompleted: !task.isCompleted };
+      }
+      return task;
+    });
+
+    setTasks(newTasks);
+  }
+
+  // function onTaskClick(taskId) {
+  //   setTasks((currentTasks) =>
+  //     currentTasks.map((task) =>
+  //       task.id === taskId ? { ...task, isCompleted: !task.isCompleted } : task,
+  //     ),
+  //   );
+  // }
 
   return (
     <div className="w-screen h-screen bg-[#23272f] flex justify-center p-6">

@@ -8,9 +8,8 @@ function Tasks(props) {
         <li key={task.id} className="flex gap-2">
           <button
             onClick={() => props.onTaskClick(task.id)}
-            className="bg-amber-100 p-3 w-full rounded-md text-left shadow">
+            className={`bg-amber-100 p-3 w-full rounded-md text-left shadow, ${task.isCompleted && "line-through text-red-400"}`}>
             {task.book}
-            {task.isCompleted ? "\n COMPELTO" : "\n INCOMPLETO"}
           </button>
 
           <button className="bg-amber-200 p-3 rounded-md shadow">
