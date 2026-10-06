@@ -1,6 +1,7 @@
 import { useState } from "react";
 import AddTask from "./componets/AddTask";
 import Tasks from "./componets/Tasks";
+import { ReceiptRussianRuble } from "lucide-react";
 
 function App() {
   const [tasks, setTasks] = useState([
@@ -35,22 +36,27 @@ function App() {
     setTasks(newTasks);
   }
 
-  // function onTaskClick(taskId) {
-  //   setTasks((currentTasks) =>
-  //     currentTasks.map((task) =>
-  //       task.id === taskId ? { ...task, isCompleted: !task.isCompleted } : task,
-  //     ),
-  //   );
-  // }
+  function onDeleteTask(taskId) {
+    const newTask = tasks.filter((task) => {
+      if (task.id !== taskId) {
+        return task;
+      }
+    });
+    return setTasks(newTask);
+  }
 
   return (
     <div className="w-screen h-screen bg-[#23272f] flex justify-center p-6">
       <div className="w=[500px]">
-        <h1 className="text-3xl text-center text-orange-400 font-Roboto">
-          Book to study
+        <h1 className="text-2xl text-center text-amber-50 font-Roboto">
+          Programming books
         </h1>
         <AddTask />
-        <Tasks tasks={tasks} onTaskClick={onTaskClick} />
+        <Tasks
+          tasks={tasks}
+          onTaskClick={onTaskClick}
+          onDeleteTask={onDeleteTask}
+        />
       </div>
     </div>
   );

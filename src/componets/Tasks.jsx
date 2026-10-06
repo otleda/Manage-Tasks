@@ -1,19 +1,24 @@
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, TrashIcon } from "lucide-react";
 
-function Tasks(props) {
-  console.log(props);
+function Tasks({ tasks, onTaskClick, onDeleteTask }) {
   return (
-    <ul className="space-y-4 p-6 bg-amber-50 rounded-md shadow-2xl">
-      {props.tasks.map((task) => (
+    <ul className={`space-y-4 w-\[360px\] p-6 bg-mist-900 rounded-md shadow`}>
+      {tasks.map((task) => (
         <li key={task.id} className="flex gap-2">
           <button
-            onClick={() => props.onTaskClick(task.id)}
-            className={`bg-amber-100 p-3 w-full rounded-md text-left shadow, ${task.isCompleted && "line-through text-red-400"}`}>
+            onClick={() => onTaskClick(task.id)}
+            className={`bg-amber-100 p-3 w-\[200px\] rounded-md text-left shadow, ${task.isCompleted && "line-through text-amber-500"}`}>
             {task.book}
           </button>
 
-          <button className="bg-amber-200 p-3 rounded-md shadow">
+          <button className="bg-amber-300 p-3 rounded-md shadow">
             <ChevronRight />
+          </button>
+
+          <button
+            onClick={() => onDeleteTask(task.id)}
+            className="bg-amber-500 p-3 rounded-md shadow">
+            <TrashIcon />
           </button>
         </li>
       ))}
